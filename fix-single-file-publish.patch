@@ -66,7 +66,7 @@ index 0ea273e7..195d1721 100644
                  }
  
 diff --git a/DnsServerCore/DnsWebService.cs b/DnsServerCore/DnsWebService.cs
-index 798d19ab..c8025851 100644
+index 798d19ab..9fb8b353 100644
 --- a/DnsServerCore/DnsWebService.cs
 +++ b/DnsServerCore/DnsWebService.cs
 @@ -130,10 +130,10 @@ namespace DnsServerCore
@@ -78,7 +78,7 @@ index 798d19ab..c8025851 100644
  
              if (configFolder is null)
 -                _configFolder = Path.Combine(_appFolder, "config");
-+                _configFolder = "/etc/technitium";
++                _configFolder = "/var/lib/technitium";
              else
                  _configFolder = configFolder;
  
