@@ -1,3 +1,22 @@
+diff --git a/DnsServerApp/systemd.service b/DnsServerApp/systemd.service
+index ee68d091..a58b8dc2 100644
+--- a/DnsServerApp/systemd.service
++++ b/DnsServerApp/systemd.service
+@@ -2,13 +2,10 @@
+ Description=Technitium DNS Server
+ 
+ [Service]
+-WorkingDirectory=/opt/technitium/dns
+-ExecStart=/usr/bin/dotnet /opt/technitium/dns/DnsServerApp.dll /etc/dns
++ExecStart=/usr/bin/technitium
+ Restart=always
+-# Restart service after 10 seconds if the dotnet service crashes:
+ RestartSec=10
+ KillSignal=SIGINT
+-SyslogIdentifier=dns-server
+ 
+ [Install]
+ WantedBy=multi-user.target
 diff --git a/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs b/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs
 index 0ea273e7..195d1721 100644
 --- a/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs
