@@ -1,8 +1,8 @@
 diff --git a/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs b/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs
-index 0ea273e7..cf2be8df 100644
+index 0ea273e7..195d1721 100644
 --- a/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs
 +++ b/DnsServerCore/Dns/Applications/DnsApplicationAssemblyLoadContext.cs
-@@ -69,16 +69,9 @@ namespace DnsServerCore.Dns.Applications
+@@ -69,16 +69,8 @@ namespace DnsServerCore.Dns.Applications
  
                  foreach (Assembly loadedAssembly in Default.Assemblies)
                  {
@@ -16,19 +16,17 @@ index 0ea273e7..cf2be8df 100644
 -                        if (requiredAssemblyName.Equals(loadedAssembly.GetName().Name, StringComparison.OrdinalIgnoreCase))
 -                            return loadedAssembly;
 -                    }
-+                    string assemblyLocation = !string.IsNullOrEmpty(loadedAssembly.Location) ? loadedAssembly.Location : Path.Combine(AppContext.BaseDirectory, loadedAssembly.GetName().Name + ".dll");
-+                    if (requiredAssemblyName.Equals(Path.GetFileNameWithoutExtension(assemblyLocation), StringComparison.OrdinalIgnoreCase))
++                    if (requiredAssemblyName.Equals(loadedAssembly.GetName().Name, StringComparison.OrdinalIgnoreCase))
 +                        return loadedAssembly;
                  }
  
                  return null;
-@@ -96,21 +89,11 @@ namespace DnsServerCore.Dns.Applications
+@@ -96,21 +88,10 @@ namespace DnsServerCore.Dns.Applications
  
                  foreach (Assembly loadedAssembly in loadedAssemblies)
                  {
 -                    if (!string.IsNullOrEmpty(loadedAssembly.Location))
-+                    string assemblyLocation = !string.IsNullOrEmpty(loadedAssembly.Location) ? loadedAssembly.Location : Path.Combine(AppContext.BaseDirectory, loadedAssembly.GetName().Name + ".dll");
-+                    if (dllFileName.Equals(Path.GetFileNameWithoutExtension(assemblyLocation), StringComparison.OrdinalIgnoreCase))
++                    if (dllFileName.Equals(loadedAssembly.GetName().Name, StringComparison.OrdinalIgnoreCase))
                      {
 -                        if (dllFileName.Equals(Path.GetFileNameWithoutExtension(loadedAssembly.Location), StringComparison.OrdinalIgnoreCase))
 -                        {
@@ -49,7 +47,7 @@ index 0ea273e7..cf2be8df 100644
                  }
  
 diff --git a/DnsServerCore/DnsWebService.cs b/DnsServerCore/DnsWebService.cs
-index 798d19ab..28e930de 100644
+index 798d19ab..c1900217 100644
 --- a/DnsServerCore/DnsWebService.cs
 +++ b/DnsServerCore/DnsWebService.cs
 @@ -130,7 +130,7 @@ namespace DnsServerCore
@@ -57,7 +55,7 @@ index 798d19ab..28e930de 100644
  
              _currentVersion = assembly.GetName().Version;
 -            _appFolder = Path.GetDirectoryName(assembly.Location);
-+            _appFolder = AppContext.BaseDirectory;
++            _appFolder = "/usr/share/technitium";
  
              if (configFolder is null)
                  _configFolder = Path.Combine(_appFolder, "config");
