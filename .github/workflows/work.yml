@@ -33,4 +33,4 @@ jobs:
         - name: Upload Artifact
           uses: actions/upload-artifact@v4
           with:
-            path: DnsServer/DnsServerApp/bin/Release/publish/
+            path: DnsServer/DnsServerApp/bin/Release/linux-x64/publish/
