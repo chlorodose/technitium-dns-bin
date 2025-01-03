@@ -30,7 +30,7 @@ jobs:
           run: |
                 dotnet publish DnsServer/DnsServerApp/DnsServerApp.csproj -c Release
 
-        - name: Make Artifact
+        - name: Upload Artifact
           uses: actions/upload-artifact@v4
           with:
             path: DnsServer/DnsServerApp/bin/Release/publish/
