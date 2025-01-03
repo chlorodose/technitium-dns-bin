@@ -47,10 +47,10 @@ index 0ea273e7..195d1721 100644
                  }
  
 diff --git a/DnsServerCore/DnsWebService.cs b/DnsServerCore/DnsWebService.cs
-index 798d19ab..c1900217 100644
+index 798d19ab..c8025851 100644
 --- a/DnsServerCore/DnsWebService.cs
 +++ b/DnsServerCore/DnsWebService.cs
-@@ -130,7 +130,7 @@ namespace DnsServerCore
+@@ -130,10 +130,10 @@ namespace DnsServerCore
              Assembly assembly = Assembly.GetExecutingAssembly();
  
              _currentVersion = assembly.GetName().Version;
@@ -58,4 +58,8 @@ index 798d19ab..c1900217 100644
 +            _appFolder = "/usr/share/technitium";
  
              if (configFolder is null)
-                 _configFolder = Path.Combine(_appFolder, "config");
+-                _configFolder = Path.Combine(_appFolder, "config");
++                _configFolder = "/etc/technitium";
+             else
+                 _configFolder = configFolder;
+ 
